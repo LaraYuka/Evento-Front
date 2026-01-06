@@ -1,0 +1,14 @@
+<div class="container">
+    <div class="card">
+        <div class="card-header">
+            <a class="btn btn-danger" (click)="voltarPagina()">Voltar</a> 
+            Evento: {{evento.id_evento}}</div>
+        <div class="card-body">
+            <h5 class="card-title">{{evento.nome}}</h5>
+            <h6 class="card-subtitle mb-2 text-body-secondary">{{evento.descricao}}</h6>
+            <p class="card-text">Data: {{evento.data_evento}}</p>
+            <p class="card-text">Endereço: {{evento.endereco}}</p>
+            <p class="card-text">Vagas: {{evento.max_vagas}}</p>
+        </div>
+    </div>
+</div>

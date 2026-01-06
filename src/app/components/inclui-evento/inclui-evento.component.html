@@ -1,0 +1,66 @@
+<div class="container">
+    <div class="card">
+        <div class="card-header">
+            <h3>Inclusão de Evento</h3>
+        </div>
+        <div class="card-body">
+            <form [formGroup]="meuForm" (ngSubmit)="enviarEvento()">
+                <div class="form-group">
+                    <label for="nome">Nome: </label>
+                    <input type="text" class="form-control" formControlName="nome" name="nome" maxlength="100" required
+                        minlength="5">
+                    <span class="text-danger" *ngIf="meuForm.get('nome')?.invalid && meuForm.get('nome')?.touched">
+                        <span *ngIf="meuForm.get('nome')?.errors?.['required']">Nome é Obrigatório</span>
+                        <span *ngIf="meuForm.get('nome')?.hasError('minlength')">Tamanho mínimo é 5 caracters</span>
+                        <span *ngIf="meuForm.get('nome')?.errors?.['maxlength']">Tamanho Máximo é 100 caracters</span>
+                    </span>
+                </div>
+                <div class="form-group">
+                    <label for="descricao">Descrição:</label>
+                    <input type="text" class="form-control" formControlName="descricao" name="descricao">
+                    <span class="text-danger"
+                        *ngIf="meuForm.get('descricao')?.invalid && meuForm.get('descricao')?.touched">
+                        <span *ngIf="meuForm.get('descricao')?.errors?.['required']">Descrição é Obrigatório</span>
+                        <span *ngIf="meuForm.get('descricao')?.hasError('minlength')">Tamanho mínimo é 15
+                            caracters</span>
+                        <span *ngIf="meuForm.get('descricao')?.errors?.['maxlength']">Tamanho Máximo é 255
+                            caracters</span>
+                    </span>
+
+                </div>
+                <div class="form-group">
+                    <label for="endereco">Endereço:</label>
+                    <input type="text" class="form-control" name="endereco" formControlName="endereco">
+                    <span class="text-danger"
+                        *ngIf="meuForm.get('endereco')?.invalid && meuForm.get('endereco')?.touched">
+                        <span *ngIf="meuForm.get('endereco')?.errors?.['required']">Endereço é Obrigatório</span>
+                        <span *ngIf="meuForm.get('endereco')?.hasError('minlength')">Tamanho mínimo é 5 caracters</span>
+                        <span *ngIf="meuForm.get('endereco')?.errors?.['maxlength']">Tamanho Máximo é 150
+                            caracters</span>
+                    </span>
+                </div>
+                <div class="form-group">
+                    <label for="data_evento">Data:</label>
+                    <input type="date" class="form-control" name="data_evento" formControlName="data_evento">
+                    <span class="text-danger"
+                        *ngIf="meuForm.get('data_evento')?.invalid && meuForm.get('nome')?.touched">
+                        <span *ngIf="meuForm.get('data_evento')?.errors?.['required']">Data é Obrigatória</span><br>
+                        <span *ngIf="meuForm.get('data_evento')?.hasError('invalidDate')">Data tem que ser
+                            Futura!</span>
+                    </span>
+                </div>
+                <div class="form-group">
+                    <label for="max_vagas">Máximo de Vagas:</label>
+                    <input type="number" class="form-control" name="max_vagas" formControlName="max_vagas">
+                    <span class="text-danger" *ngIf="meuForm.get('max_vagas')?.invalid && meuForm.get('nome')?.touched">
+                        <span *ngIf="meuForm.get('max_vagas')?.errors?.['required']">Máximo de Vagas é
+                            Obrigatório</span>
+                        <span *ngIf="meuForm.get('max_vagas')?.hasError('min')">É necessário ao menos uma vaga!</span>
+                    </span>
+                </div>
+                <div *ngIf="erro" class="alert alert-danger">{{msgErro}} </div>
+                <button type="submit" class="btn btn-primary">Criar Evento</button>
+            </form>
+        </div>
+    </div>
+</div>
